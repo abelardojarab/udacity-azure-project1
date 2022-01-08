@@ -2,7 +2,8 @@
   "variables": {
     "subscription_id": "{{env `AZ_SUSCRIPTION_ID`}}",
     "client_id": "{{env `AZ_CLIENT_ID`}}",
-    "client_secret": "{{env `AZ_CLIENT_SECRET`}}"
+    "client_secret": "{{env `AZ_CLIENT_SECRET`}}",
+    "tenant_id": "{{env `AZ_TENANT_ID`}}"
   },
   "builders": [
     {
@@ -11,17 +12,19 @@
       "client_id": "{{user `client_id`}}",
       "client_secret": "{{user `client_secret`}}",
       "subscription_id": "{{user `subscription_id`}}",
-
+      "tenant_id": "{{user `tenant_id`}}",
       "os_type": "Linux",
       "image_publisher": "Canonical",
       "image_offer": "UbuntuServer",
       "image_sku": "18.04-LTS",
 
-      "managed_image_resource_group_name": "udacity-assignment1-rg",
+      "managed_image_resource_group_name": "automation",
       "managed_image_name": "udacity-packer-image",
 
-      "location": "West Europe",
-      "vm_size": "Standard_B1s"
+      "location": "eastus",
+      "vm_size": "Standard_B1s",
+
+      "async_resourcegroup_delete": true
     }
   ],
   "provisioners": [
